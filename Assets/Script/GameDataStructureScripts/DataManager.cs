@@ -18,6 +18,8 @@ public class DataManager : MonoBehaviour
 	[SerializeField] static Dictionary<int, ItemData> itemSet;
 	[SerializeField] static Dictionary<int, FieldData> fieldDataSet;
 	[SerializeField] static Dictionary<int, StoreData> storeDataSet;
+    [SerializeField] static Dictionary<int, QuestData> questSet;
+    [SerializeField] static Dictionary<int, int> findID;
 
 	// field - refine data
 	[SerializeField] static List<ItemData> searchItemList;
@@ -42,7 +44,8 @@ public class DataManager : MonoBehaviour
 		LoadFieldData();
 		LoadStageResultData();
 		LoadStoreData();
-		playerDataLoading = true;
+        LoadQuestData();
+        playerDataLoading = true;
 	}
 
 	void OnApplicationQuit()
@@ -345,8 +348,84 @@ public class DataManager : MonoBehaviour
 		}
 	}
 
-	// player data load -> use player pref
-	public static void LoadPlayerData()
+    public static void LoadQuestData()
+    {
+        Debug.Log("quest load");
+
+        questSet = new Dictionary<int, QuestData>();
+        findID = new Dictionary<int, int>();
+
+        TextAsset xml_load = Resources.Load<TextAsset>("DataDocument/QuestData");
+        XmlDocument doc = new XmlDocument();
+        doc.LoadXml(xml_load.text);
+
+        XmlNodeList nodes = doc.SelectNodes("QuestList/quest");
+
+        int idCheck = 0;
+        int questOrder = 1;
+
+        int findOrder = 1;
+        int page = 1;
+
+        foreach (XmlNode node in nodes)
+        {
+            int id = int.Parse(node.SelectSingleNode("id").InnerText);
+            int lenght = -1;
+            string name = node.SelectSingleNode("name").InnerText;
+            string content = node.SelectSingleNode("content").InnerText;
+            int openType = -1;
+            string openTerms = null;
+            int clearType = -1;
+            string clearTerms = null;
+            string wait = null;
+            string reward = null;
+
+            if (id != idCheck)
+            {
+                lenght = int.Parse(node.SelectSingleNode("length").InnerText);
+                openType = int.Parse(node.SelectSingleNode("openType").InnerText);
+                clearType = int.Parse(node.SelectSingleNode("clearType").InnerText);
+                wait = node.SelectSingleNode("wait").InnerText;
+                reward = node.SelectSingleNode("reward").InnerText;
+
+                if (openType != 0)
+                {
+                    openTerms = node.SelectSingleNode("openTerms").InnerText;
+                    //Debug.Log(id+"  "+openType+"opentype");
+                }
+                if (clearType != 0)
+                {
+                    clearTerms = node.SelectSingleNode("clearTerms").InnerText;
+                }
+            }
+
+            try
+            {
+                if (id != idCheck)
+                {
+                    questSet.Add(questOrder++, new QuestData(id, lenght, name, content, openType, openTerms, clearType, clearTerms, wait, reward));
+                    findID.Add(findOrder++, page);
+                    idCheck = id;
+                }
+                else
+                {
+                    questSet.Add(questOrder++, new QuestData(id, name, content));
+
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.StackTrace);
+                Debug.Log(e.Message);
+            }
+
+            page++;
+        }
+    }
+
+
+    // player data load -> use player pref
+    public static void LoadPlayerData()
 	{
 		// set default data
 		playerData = new PlayerData();
@@ -628,8 +707,42 @@ public class DataManager : MonoBehaviour
 		return DataManager.storeDataSet[ step ];
 	}
 
-	// check player data loading
-	public static bool CheckPlayerDataLoading()
+    //find Quest Data
+    public static QuestData FindQuestDataByID(int id)
+    {
+        try
+        {
+            return questSet[id];
+        }
+        catch (KeyNotFoundException e)
+        {
+            Debug.Log(e.StackTrace);
+            Debug.Log(e.Message);
+        }
+
+        return questSet[id];
+    }
+
+    //find Quest order
+    public static int FindDictionryNumber(int page)
+    {
+        int i = findID[page];
+
+        try
+        {
+            return i;
+        }
+        catch (KeyNotFoundException e)
+        {
+            Debug.Log(e.StackTrace);
+            Debug.Log(e.Message);
+        }
+        return i;
+    }
+
+
+    // check player data loading
+    public static bool CheckPlayerDataLoading()
 	{
 		return DataManager.playerDataLoading;
 	}

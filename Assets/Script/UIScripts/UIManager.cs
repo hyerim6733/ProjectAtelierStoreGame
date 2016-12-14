@@ -42,6 +42,9 @@ public class UIManager : MonoBehaviour
 	[SerializeField] GameObject characterCreateUI;
 	[SerializeField] CharacterCreateUI characterCreateUILogic;
 
+    [SerializeField] GameObject questUI;
+    [SerializeField] QuestUI questUILogic;
+
 	[SerializeField] GameObject loadingScene;
 
 	[SerializeField] Text testField;
@@ -113,7 +116,11 @@ public class UIManager : MonoBehaviour
 		characterCreateUI = transform.Find( "CharacterCreateUI" ).gameObject;
 		characterCreateUILogic = characterCreateUI.GetComponent<CharacterCreateUI>();
 
-		loadingScene = transform.Find( "LoadingScene" ).gameObject;
+        questUI = transform.Find("QuestUI").gameObject;
+        questUILogic = questUI.GetComponent<QuestUI>();
+        questUILogic.LinkComponentElement();
+
+        loadingScene = transform.Find( "LoadingScene" ).gameObject;
 	}
 
 	// update ui component
@@ -137,6 +144,9 @@ public class UIManager : MonoBehaviour
 
 		if( sellItemSettingUI.activeSelf )
 			sellItemSettingUILogic.UpdateComponentElement();
+
+        if (questUI.activeSelf)
+            questUILogic.StoryPolicy();
 	}
 	
 	// mode change
@@ -160,7 +170,8 @@ public class UIManager : MonoBehaviour
 				createUI.SetActive( false );
 				loadingScene.SetActive( false );
 				characterCreateUI.SetActive( true );
-				break;
+                questUI.SetActive(false);
+                break;
 			case GameManager.GameMode.Start:
 				storeUI.SetActive( false );
 				storageUI.SetActive( false );
@@ -173,7 +184,8 @@ public class UIManager : MonoBehaviour
 				createUI.SetActive( false );
 				characterCreateUI.SetActive( false );
 				loadingScene.SetActive( true );
-				break;
+                questUI.SetActive(true);
+                break;
 			case GameManager.GameMode.Loading:
 				storeUI.SetActive( false );
 				storageUI.SetActive( false );
@@ -198,7 +210,8 @@ public class UIManager : MonoBehaviour
 				sellItemSettingUI.SetActive( false );
 				loadingScene.SetActive( false );
 				resultRewardUI.SetActive( false );
-				break;
+                questUI.SetActive(false);
+                break;
 			case GameManager.GameMode.StoreCustomizing:
 				chatSceneUI.SetActive( false );
 				storeUI.SetActive( false );
@@ -214,7 +227,8 @@ public class UIManager : MonoBehaviour
 				furnitureMarketUI.SetActive( false );
 				stageUI.SetActive( true );
 				stageUILogic.ResetComponent();
-				break;
+                questUI.SetActive(false);
+                break;
 			case GameManager.GameMode.StageResult:
 				chatSceneUI.SetActive( false );
 				storageUI.SetActive( false );
@@ -223,8 +237,9 @@ public class UIManager : MonoBehaviour
 				sellItemSettingUI.SetActive( false );
 				resultUI.SetActive( true );
 				resultUILogic.SetComponentElement();
-				break;
-		}
+                questUI.SetActive(false);
+                break;
+        }
 	}
 	
 	// set loading scene

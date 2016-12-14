@@ -246,4 +246,29 @@ public class PlayerData
 
 		return -1;
 	}
+
+    public int SearchItemCount(ItemData data)
+    {
+        int count = 0;
+
+        for (int i = 0; i < (haveItemSet.Length / 3); i++)
+        {
+            if (haveItemSet[i] == null || haveItemSet[i].Item == null || haveItemSet[i].Item.ID == 0)
+            {
+                Debug.Log("pass");
+                continue;
+            }
+            else
+            {
+
+                if (haveItemSet[i].Item.ID == data.ID)
+                {
+
+                    Debug.Log("갯수충분");
+                    count = haveItemSet[i].Count;
+                }
+            }
+        }
+        return count;
+    }
 }

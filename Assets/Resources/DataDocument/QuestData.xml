@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QuestList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<quest>
+		<id>1</id>
+		<length>4</length>
+		<name>슈</name>
+		<content>안녕, 마법가게에 온 걸 환영해</content>
+		<openType>0</openType>
+		<clearType>0</clearType>
+		<wait>슈와 베리의 인사</wait>
+		<reward>0,0,10</reward>
+	</quest>
+	<quest>
+		<id>1</id>
+		<name>베리</name>
+		<content>새로운 마법사님 이시군요!</content>
+	</quest>
+	<quest>
+		<id>1</id>
+		<name>슈</name>
+		<content>우리 가게를 잘 부탁드려요!</content>
+	</quest>
+	<quest>
+		<id>1</id>
+		<name>베리</name>
+		<content>잘부탁드립니다!</content>
+	</quest>
+	<quest>
+		<id>2</id>
+		<length>2</length>
+		<name>베리</name>
+		<content>슈가 다쳤어요 빨간 물약을 구해주세요</content>
+		<openType>1</openType>
+		<openTerms>1</openTerms>
+		<clearType>1</clearType>
+		<clearTerms>10,1</clearTerms>
+		<wait>빨간물약을 구해오자.</wait>
+		<reward>1,1,1</reward>
+	</quest>
+	<quest>
+		<id>2</id>
+		<name>슈</name>
+		<content>으앙</content>
+	</quest>
+	<quest>
+		<id>3</id>
+		<length>5</length>
+		<name>슈</name>
+		<content>베리야 고마워</content>
+		<openType>1</openType>
+		<openTerms>2</openTerms>
+		<clearType>1</clearType>
+		<clearTerms>16,5</clearTerms>
+		<wait>노란약초를 5개 전달</wait>
+		<reward>1,1,2</reward>
+	</quest>
+	<quest>
+		<id>3</id>
+		<name>베리</name>
+		<content>아니야! 마법사님이 구해주신건데 뭐</content>
+	</quest>
+	<quest>
+		<id>3</id>
+		<name>슈</name>
+		<content>그나저나 더 필요한게 없어?</content>
+	</quest>
+	<quest>
+		<id>3</id>
+		<name>베리</name>
+		<content>약초가 필요해!!!</content>
+	</quest>
+	<quest>
+		<id>3</id>
+		<name>슈</name>
+		<content>약초를 구해주세요</content>
+	</quest>
+	<quest>
+		<id>4</id>
+		<length>6</length>
+		<name>핑키</name>
+		<content>넌 누구야</content>
+		<openType>1</openType>
+		<openTerms>3</openTerms>
+		<clearType>0</clearType>
+		<clearTerms>0</clearTerms>
+		<wait>-</wait>
+		<reward>0,0,10</reward>
+	</quest>
+	<quest>
+		<id>4</id>
+		<name>마법사</name>
+		<content>(이 귀여운 동물은 뭐지)</content>
+	</quest>
+	<quest>
+		<id>4</id>
+		<name>핑키</name>
+		<content>언제부터 여기서 장사를 한거야!</content>
+	</quest>
+	<quest>
+		<id>4</id>
+		<name>마법사</name>
+		<content>오늘 오픈했어</content>
+	</quest>
+	<quest>
+		<id>4</id>
+		<name>핑키</name>
+		<content>저리가 여기는 내 구역이야!</content>
+	</quest>
+	<quest>
+		<id>4</id>
+		<name>마법사</name>
+		<content>이게 무슨 억지냐!</content>
+	</quest>
+	<quest>
+		<id>5</id>
+		<length>8</length>
+		<name>핑키</name>
+		<content>기본스크롤 3개를 준다면 비켜주지</content>
+		<openType>1</openType>
+		<openTerms>4</openTerms>
+		<clearType>1</clearType>
+		<clearTerms>28,3</clearTerms>
+		<wait>기본스크롤 3개를 카카오에게 주기</wait>
+		<reward>1,1,10</reward>
+	</quest>
+	<quest>
+		<id>5</id>
+		<name>마법사</name>
+		<content>그게 무슨소리야. 내가 왜!</content>
+	</quest>
+	<quest>
+		<id>5</id>
+		<name>핑키</name>
+		<content>그렇지 않으면 여기서 장난치겠어</content>
+	</quest>
+	<quest>
+		<id>5</id>
+		<name>마법사</name>
+		<content>너무해! 난 기본스크롤을 어디서 구하는지 몰라</content>
+	</quest>
+	<quest>
+		<id>5</id>
+		<name>핑키</name>
+		<content>니가 직접 만들어야지! 제작을 해보도록해.</content>
+	</quest>
+	<quest>
+		<id>5</id>
+		<name>마법사</name>
+		<content>그렇게 말해줘도 나는 몰라</content>
+	</quest>
+	<quest>
+		<id>5</id>
+		<name>핑키</name>
+		<content>일단 제작을 할 수 있는 가구를 구매한 다음, 제작 도구를 누르면 제작을 실행 할 수 있어. 난 다 알려준 것 같으니 갈게. 기본스크롤 3개도 부탁해 친구</content>
+	</quest>
+	<quest>
+		<id>5</id>
+		<name>마법사</name>
+		<content>뭐야! ㅠㅠ</content>
+	</quest>
+</QuestList>

@@ -31,7 +31,9 @@ public class GameManager : MonoBehaviour
 		StoreCustomizing = 4,
 		StoreOpenPreprocess = 5,
 		StoreOpen = 6,
-		StageResult = 7}
+		StageResult = 7,
+        Quest = 8
+    }
 
 	;
 
@@ -139,6 +141,12 @@ public class GameManager : MonoBehaviour
 
 		StartCoroutine( fieldManager.CreateFieldItemPolicy() );
 	}
+
+    // set quest story mode
+    public void SetQuestMode()
+    {
+        presentGameMode = GameMode.Quest;
+    }
 
 	// set store customizing mode
 	public void SetCutomizeingMode()

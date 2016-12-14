@@ -40,11 +40,11 @@ public class StoreUI : MonoBehaviour
 		charHead = transform.Find( "PlayerStatus" ).Find( "CharHead" ).GetComponent<Image>();
 
 		// object element
-		questUI = transform.Find( "QuestUI" ).gameObject;
+		//questUI = transform.Find( "QuestUI" ).gameObject;
 		stepUpButton = transform.Find( "StepUpButton" ).gameObject;
 
-		// object element off
-		ClearChildUI();
+        // object element off
+        ClearChildUI();
 	}
 
 	// update element
@@ -64,7 +64,7 @@ public class StoreUI : MonoBehaviour
 	// clear child ui
 	public void ClearChildUI()
 	{		
-		questUI.SetActive( false );
+		//questUI.SetActive( false );
 	}
 
 	// on click method
@@ -99,7 +99,7 @@ public class StoreUI : MonoBehaviour
 	public void OnClickQuestButton()
 	{
 		ClearChildUI();
-		questUI.SetActive( true );
+		//questUI.SetActive( true );
 	}
 
 	// on click step up button
